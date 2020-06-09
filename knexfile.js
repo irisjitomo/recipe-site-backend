@@ -8,10 +8,10 @@ module.exports = {
       filename: './dev.sqlite3'
     },
 		migrations: {
-			directory: './data/migrations'
+			directory: './database/migrations'
 		},
 		seeds: {
-			directory: './data/seeds'
+			directory: './database/seeds'
 		},
 		pool: {
 		  afterCreate: (conn, done) => {
