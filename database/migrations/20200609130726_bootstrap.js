@@ -19,7 +19,6 @@ exports.up = function(knex) {
       .onUpdate('CASCADE')
       .onDelete('RESTRICT')
     })
-
 };
 
 exports.down = function(knex) {
