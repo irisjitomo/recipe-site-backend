@@ -1,8 +1,14 @@
 const db = require('../database/dbConfig')
 
 module.exports = {
+    getRecipesAll,
     getSavedRecipes,
-    addRecipe
+    addRecipe,
+    remove
+}
+
+function getRecipesAll() {
+    return db('saved_recipes')
 }
 
 function getSavedRecipes(id) {
@@ -13,4 +19,10 @@ function getSavedRecipes(id) {
 function addRecipe(recipe) {
     return db('saved_recipes as sr')
     .insert(recipe, 'id')
+}
+
+function remove(id) {
+    return db('saved_recipes as sr')
+    .where('id', id)
+    .del()
 }
