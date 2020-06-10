@@ -4,13 +4,15 @@ const helmet = require('helmet');
 require('dotenv').config()
 
 // const authenticate = require('../auth/authenticate-middleware.js');
-// const authRouter = require('../auth/auth-router.js');
+const authRouter = require('./auth/auth-Router');
 
 const server = express();
 
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
+
+server.use('/api/auth', authRouter)
 
 server.get('/',  (req, res) => {
     res.send('Welcome to the Recipe Cheqr API')
