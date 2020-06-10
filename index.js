@@ -17,6 +17,7 @@ server.get('/',  (req, res) => {
 })
 
 const PORT = process.env.PORT || 3300;
+
 server.listen(PORT, () => {
     console.log(`\n=== Server Listening on port ${PORT} ===\n`)
     console.log(process.env.PORT)
