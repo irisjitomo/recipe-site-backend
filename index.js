@@ -3,8 +3,9 @@ const cors = require('cors');
 const helmet = require('helmet');
 require('dotenv').config()
 
-// const authenticate = require('../auth/authenticate-middleware.js');
+const authenticate = require('./auth/authenticate-middleWare');
 const authRouter = require('./auth/auth-Router');
+const savedRecipesRouter = require('./router/savedRecipes-router')
 
 const server = express();
 
@@ -13,6 +14,7 @@ server.use(cors());
 server.use(express.json());
 
 server.use('/api/auth', authRouter)
+server.use('/api/recipes', authenticate, savedRecipesRouter)
 
 server.get('/',  (req, res) => {
     res.send('Welcome to the Recipe Cheqr API')
