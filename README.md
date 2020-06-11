@@ -8,7 +8,7 @@ Registration of a new user // POST
 `https://recipe-cheqr-backend.herokuapp.com/api/auth/register`
 
 Logging In a new user giving a token for authorization // POST
-`https://recipe-cheqr-backend.herokuapp.com/api/auth/register`
+`https://recipe-cheqr-backend.herokuapp.com/api/auth/login`
 
 __________________________________________________________________
 
