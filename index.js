@@ -4,7 +4,7 @@ const helmet = require('helmet');
 require('dotenv').config()
 
 var corsOptions = {
-    origin: "*",
+    origin: "http://localhost:3000",
     methods: ["POST", "GET", "DELETE", "PUT"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
@@ -17,15 +17,8 @@ const savedRecipesRouter = require('./router/savedRecipes-router')
 const server = express();
 
 server.use(helmet());
-// server.options(cors(corsOptions))
-// server.use(cors());
-
-server.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
-
+server.options(cors(corsOptions))
+server.use(cors(corsOptions));
 server.use(express.json());
 
 server.use('/api/auth', authRouter)
