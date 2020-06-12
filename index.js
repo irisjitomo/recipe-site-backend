@@ -1,10 +1,11 @@
 const express = require('express');
-const cors = require('cors');
+// const cors = require('cors');
+var cors = require('cors')
 const helmet = require('helmet');
 require('dotenv').config()
 
 var corsOptions = {
-    origin: "http://localhost:3000",
+    origin: "*",
     methods: ["POST", "GET", "DELETE", "PUT"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
@@ -17,9 +18,18 @@ const savedRecipesRouter = require('./router/savedRecipes-router')
 const server = express();
 
 server.use(helmet());
+server.use((req, res, next) => {
+    res.header("Acess-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
+    if (req.method === 'OPTIONS' ) {
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET')
+        return res.status(200).json({})
+    }
+    next();
+})
 // server.options(cors(corsOptions))
 // server.use(cors(corsOptions));
-server.use(cors())
+// server.use(cors())
 server.use(express.json());
 
 server.use('/api/auth', authRouter)
