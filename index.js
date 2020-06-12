@@ -17,7 +17,7 @@ const savedRecipesRouter = require('./router/savedRecipes-router')
 const server = express();
 
 server.use(helmet());
-server.options(cors(corsOptions))
+// server.options(cors(corsOptions))
 server.use(cors(corsOptions));
 server.use(express.json());
 
