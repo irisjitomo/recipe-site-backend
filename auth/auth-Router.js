@@ -6,8 +6,9 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken')
 
 var corsOptions = {
-    origin: true,
+    origin: "*",
     methods: ["POST"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
 }
 
