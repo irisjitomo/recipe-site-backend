@@ -5,14 +5,8 @@ const secret = require('./secretForToken')
 const cors = require('cors');
 const jwt = require('jsonwebtoken')
 
-var corsOptions = {
-    origin: "*",
-    methods: ["POST"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
-}
 
-router.post('/register', cors(corsOptions), (req, res) => {
+router.post('/register', (req, res) => {
     let newUser = req.body
     const hash = bcrypt.hashSync(newUser.password, 7)
     newUser.password = hash
