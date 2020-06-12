@@ -14,7 +14,7 @@ router.post('/register', (req, res) => {
         res.status(201).json(user)
     })
     .catch(() => {
-        res.status(500).json({message : 'could not complete request'})
+        res.status(500).json({message : 'could not complete request', error: error})
     })
 })
 
@@ -34,6 +34,9 @@ router.post('/login', (req, res) => {
         } else {
             res.status(401).json({ error: `Could not log in ${login.username}`})
         }
+    })
+    .catch(() => {
+        res.status(500).json(err)
     })
 })
 
