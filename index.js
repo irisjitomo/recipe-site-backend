@@ -10,7 +10,8 @@ const savedRecipesRouter = require('./router/savedRecipes-router')
 const server = express();
 
 var corsOptions = {
-    origin: true
+    "origin": true,
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
 }
 
 server.use(helmet());
