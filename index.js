@@ -9,6 +9,7 @@ var corsOptions = {
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
 }
+
 const authenticate = require('./auth/authenticate-middleWare');
 const authRouter = require('./auth/auth-Router');
 const savedRecipesRouter = require('./router/savedRecipes-router')
@@ -16,6 +17,7 @@ const savedRecipesRouter = require('./router/savedRecipes-router')
 const server = express();
 
 server.use(helmet());
+server.options(cors(corsOptions))
 server.use(cors(corsOptions));
 server.use(express.json());
 
