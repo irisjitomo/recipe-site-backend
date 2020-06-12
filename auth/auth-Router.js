@@ -2,9 +2,16 @@ const router = require('express').Router()
 const db = require('./auth-model')
 const bcrypt = require('bcryptjs')
 const secret = require('./secretForToken')
+const cors = require('cors');
 const jwt = require('jsonwebtoken')
 
-router.post('/register', (req, res) => {
+var corsOptions = {
+    origin: true,
+    methods: ["POST"],
+    credentials: true
+}
+
+router.post('/register', cors(corsOptions), (req, res) => {
     let newUser = req.body
     const hash = bcrypt.hashSync(newUser.password, 7)
     newUser.password = hash
