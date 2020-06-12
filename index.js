@@ -13,8 +13,8 @@ server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
-server.use('/api/auth', authRouter)
-server.use('/api/recipes', authenticate, savedRecipesRouter)
+server.use('/api/auth', cors(), authRouter)
+server.use('/api/recipes', cors(), authenticate, savedRecipesRouter)
 
 server.get('/',  (req, res) => {
     res.send('Welcome to the Recipe Cheqr API')
