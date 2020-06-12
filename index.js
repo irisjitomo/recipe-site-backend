@@ -11,7 +11,8 @@ const server = express();
 
 var corsOptions = {
     origin: true,
-    methods: ["POST"]
+    methods: ["POST"],
+    credentials: true
 }
 
 server.use(helmet());
