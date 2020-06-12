@@ -9,11 +9,15 @@ const savedRecipesRouter = require('./router/savedRecipes-router')
 
 const server = express();
 
+var corsOptions = {
+    origin: true
+}
+
 server.use(helmet());
 // server.use(cors());
 server.use(express.json());
 
-server.use('/api/auth', cors(), authRouter)
+server.use('/api/auth', cors(corsOptions), authRouter)
 server.use('/api/recipes', cors(), authenticate, savedRecipesRouter)
 
 server.get('/',  (req, res) => {
