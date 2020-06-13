@@ -17,20 +17,17 @@ const savedRecipesRouter = require('./router/savedRecipes-router')
 
 const server = express();
 
-server.use(helmet());
-server.use(express.json());
 server.use((req, res, next) => {
     res.header("Acess-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "*");
-    if (req.method === 'OPTIONS' ) {
-        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET')
-        return res.status(200).json({})
-    }
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 })
+
+server.use(helmet());
+server.use(express.json());
+server.use(cors())
 // server.options(cors(corsOptions))
 // server.use(cors(corsOptions));
-// server.use(cors())
 
 server.use('/api/auth', authRouter)
 server.use('/api/recipes', authenticate, savedRecipesRouter)
