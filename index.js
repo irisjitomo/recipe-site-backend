@@ -17,11 +17,11 @@ const savedRecipesRouter = require('./router/savedRecipes-router')
 
 const server = express();
 
-server.use((req, res, next) => {
-    res.header("Acess-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-})
+// server.use((req, res, next) => {
+//     res.header("Acess-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// })
 
 server.use(helmet());
 server.use(express.json());
