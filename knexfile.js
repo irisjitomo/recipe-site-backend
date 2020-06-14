@@ -1,6 +1,7 @@
 // Update with your config settings.
 require('dotenv').config()
 
+// localPg config for production object
 const localPg = {
   host: 'localhost',
   database: process.env.DB_NAME,
