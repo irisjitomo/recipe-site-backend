@@ -1,13 +1,14 @@
 // Update with your config settings.
+require('dotenv').config()
 
 const localPg = {
   host: 'localhost',
-  database: 'recipe-cheqr',
+  database: process.env.DB_NAME,
   user: process.env.DB_USER,
   password: process.env.DB_PASS
 }
 
-const dbConnection = process.env.DATABASE_URL || localPg
+const dbConnection = process.env.DATABASE_URL || localPg;
 
 module.exports = {
 
