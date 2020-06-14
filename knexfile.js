@@ -1,5 +1,14 @@
 // Update with your config settings.
 
+const localPg = {
+  host: 'localhost',
+  database: 'recipe-cheqr',
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS
+}
+
+const dbConnection = process.env.DATABASE_URL || localPg
+
 module.exports = {
 
   development: {
@@ -9,6 +18,7 @@ module.exports = {
       filename: './dev.sqlite3'
     },
 		migrations: {
+      tableName: 'knex_migrations',
 			directory: './database/migrations'
 		},
 		seeds: {
@@ -21,15 +31,16 @@ module.exports = {
 		  },
 		},
   },
+  // add this config to project for heroku server
   production: {
-    client: 'pg',
-    connection: process.env.DATABASE_URL,
+    client: 'pg', // npm i pg
+    connection: dbConnection, // could be an object or a string
     pool: {
-      afterCreate: (conn, done) => {
-        conn.run('PRAGMA foreign_keys = ON', done);
-      },
+      min: 2,
+      max: 10,
     },
     migrations: {
+      tableName: 'knex_migrations',
       directory: './database/migrations',
     },
     seeds: {
