@@ -5,6 +5,7 @@ module.exports = {
   add2,
   findById,
   findBy,
+  retrieve
 };
 
 async function add(user) {
@@ -21,6 +22,10 @@ async function add(user) {
 //       return findById(id);
 //     });
 // }
+
+function retrieve() {
+  return db('users')
+}
 
 function add2(user) {
   return db('users')

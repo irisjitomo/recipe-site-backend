@@ -32,6 +32,16 @@ router.post('/register', (req, res) => {
     });
 });
 
+router.get('/getUsers', (req, res) => {
+  db.retrieve()
+  .then(users => {
+    res.status(200).json(users)
+  })
+  .catch(() => {
+    res.status(500).json({error: "not getting users"})
+  })
+})
+
 router.post('/signup', (req, res) => {
       let newUser = req.body;
       const hash = bcrypt.hashSync(newUser.password, 7);
