@@ -42,11 +42,11 @@ module.exports = {
       max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations',
+      tableName: 'knex_migrations', // dont forget to `heroku run knex migrate:latest -a 'backend name in heroku'`
       directory: './database/migrations',
     },
     seeds: {
-      directory: './database/seeds',
+      directory: './database/seeds', // dont forget to `heroku run knex seed:run -a 'backend name in heroku'`
     },
   },
 

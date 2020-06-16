@@ -16,18 +16,9 @@ const authRouter = require('./auth/auth-Router');
 const savedRecipesRouter = require('./router/savedRecipes-router')
 
 const server = express();
-
-// server.use((req, res, next) => {
-//     res.header("Acess-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// })
-
 server.use(helmet());
 server.use(cors())
 server.use(express.json());
-// server.options(cors(corsOptions))
-// server.use(cors(corsOptions));
 
 server.use('/api/auth', authRouter)
 server.use('/api/recipes', authenticate, savedRecipesRouter)

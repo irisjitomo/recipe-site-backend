@@ -6,17 +6,6 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 
 router.post('/register', (req, res) => {
-//   res.setHeader('Access-Control-Allow-Origin', '*');
-//   res.setHeader(
-//     'Access-Control-Allow-Methods',
-//     'GET, POST, OPTIONS, PUT, PATCH, DELETE'
-//   ); // If needed
-//   res.setHeader(
-//     'Access-Control-Allow-Headers',
-//     'X-Requested-With,content-type'
-//   ); // If needed
-//   res.setHeader('Access-Control-Allow-Credentials', true);
-
   let newUser = req.body;
   const hash = bcrypt.hashSync(newUser.password, 7);
   newUser.password = hash;
